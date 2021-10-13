@@ -323,7 +323,6 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
     @Override
     public MultiSet<K> keys() {
         if (keysMultiSetView == null) {
-            //keysMultiSetView = UnmodifiableMultiSet.unmodifiableMultiSet(new KeysMultiSet());
             keysMultiSetView = new KeysMultiSet();
         }
         return keysMultiSetView;
