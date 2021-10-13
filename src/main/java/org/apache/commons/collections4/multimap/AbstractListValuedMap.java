@@ -136,7 +136,7 @@ public abstract class AbstractListValuedMap<K, V> extends AbstractMultiValuedMap
                 if (changed) {
                     getMap().put(key, list);
                 }
-                return changed;
+                return true;
             }
             return list.addAll(index, c);
         }
@@ -275,7 +275,7 @@ public abstract class AbstractListValuedMap<K, V> extends AbstractMultiValuedMap
         @Override
         public void remove() {
             iterator.remove();
-            if (values.isEmpty()) {
+            if (!values.isEmpty()) {
                 getMap().remove(key);
             }
         }
