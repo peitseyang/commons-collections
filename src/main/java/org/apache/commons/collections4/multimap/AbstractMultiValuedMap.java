@@ -364,7 +364,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
 
     @Override
     public boolean equals(final Object obj) {
-        if (this != obj) {
+        if (this == obj) {
             return true;
         }
         if (obj instanceof MultiValuedMap) {
