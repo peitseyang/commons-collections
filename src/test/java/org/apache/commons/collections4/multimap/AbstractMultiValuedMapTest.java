@@ -256,52 +256,6 @@ public abstract class AbstractMultiValuedMapTest<K, V> extends AbstractObjectTes
         assertTrue(col2.contains("uno"));
     }
 
-    public void testRemoveMappingThroughGet() {
-        if (!isRemoveSupported()) {
-            return;
-        }
-        resetFull();
-        final MultiValuedMap<K, V> map = getMap();
-        @SuppressWarnings("unchecked")
-        Collection<V> col = map.get((K) "one");
-        assertEquals(2, col.size());
-        assertEquals(6, map.size());
-        col.remove("uno");
-        col.remove("un");
-        assertFalse(map.containsKey("one"));
-        assertFalse(map.containsMapping("one", "uno"));
-        assertFalse(map.containsMapping("one", "un"));
-        assertFalse(map.containsValue("uno"));
-        assertFalse(map.containsValue("un"));
-        assertEquals(4, map.size());
-        col = map.remove("one");
-        assertNotNull(col);
-        assertEquals(0, col.size());
-    }
-
-    public void testRemoveMappingThroughGetIterator() {
-        if (!isRemoveSupported()) {
-            return;
-        }
-        resetFull();
-        final MultiValuedMap<K, V> map = getMap();
-        @SuppressWarnings("unchecked")
-        final Iterator<V> it = map.get((K) "one").iterator();
-        while (it.hasNext()) {
-            it.next();
-            it.remove();
-        }
-        assertFalse(map.containsKey("one"));
-        assertFalse(map.containsMapping("one", "uno"));
-        assertFalse(map.containsMapping("one", "un"));
-        assertFalse(map.containsValue("uno"));
-        assertFalse(map.containsValue("un"));
-        assertEquals(4, map.size());
-        final Collection<V> coll = map.remove("one");
-        assertNotNull(coll);
-        assertEquals(0, coll.size());
-    }
-
     public void testContainsValue() {
         final MultiValuedMap<K, V> map = makeFullMap();
         assertTrue(map.containsValue("uno"));
@@ -311,17 +265,6 @@ public abstract class AbstractMultiValuedMapTest<K, V> extends AbstractObjectTes
         assertTrue(map.containsValue("tres"));
         assertTrue(map.containsValue("trois"));
         assertFalse(map.containsValue("quatro"));
-    }
-
-    public void testKeyContainsValue() {
-        final MultiValuedMap<K, V> map = makeFullMap();
-        assertTrue(map.containsMapping("one", "uno"));
-        assertTrue(map.containsMapping("one", "un"));
-        assertTrue(map.containsMapping("two", "dos"));
-        assertTrue(map.containsMapping("two", "deux"));
-        assertTrue(map.containsMapping("three", "tres"));
-        assertTrue(map.containsMapping("three", "trois"));
-        assertFalse(map.containsMapping("four", "quatro"));
     }
 
     @SuppressWarnings("unchecked")

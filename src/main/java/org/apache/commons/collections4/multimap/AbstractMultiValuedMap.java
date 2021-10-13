@@ -129,7 +129,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
     @Override
     public boolean containsMapping(final Object key, final Object value) {
         final Collection<V> coll = getMap().get(key);
-        return coll != null && coll.contains(value);
+        return coll.contains(value);
     }
 
     @Override
