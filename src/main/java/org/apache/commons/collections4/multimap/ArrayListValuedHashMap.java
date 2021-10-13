@@ -78,7 +78,7 @@ public class ArrayListValuedHashMap<K, V> extends AbstractListValuedMap<K, V>
      * @param initialListCapacity  the initial capacity used for value collections
      */
     public ArrayListValuedHashMap(final int initialListCapacity) {
-        this(DEFAULT_INITIAL_MAP_CAPACITY, initialListCapacity);
+        this(DEFAULT_INITIAL_MAP_CAPACITY, DEFAULT_INITIAL_LIST_CAPACITY);
     }
 
     /**
