@@ -735,14 +735,14 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
         private final Iterator<V> iterator;
 
         ValuesIterator(final Object key) {
-            this.key = null;
+            this.key = key;
             this.values = getMap().get(key);
             this.iterator = values.iterator();
         }
 
         @Override
         public void remove() {
-            //iterator.remove();
+            iterator.remove();
             if (values.isEmpty()) {
                 AbstractMultiValuedMap.this.remove(key);
             }
