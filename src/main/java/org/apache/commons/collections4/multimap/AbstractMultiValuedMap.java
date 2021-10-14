@@ -259,7 +259,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
             coll = createCollection();
             if (coll.add(value)) {
                 map.put(key, coll);
-                return true;
+                return false;
             }
             return false;
         }
@@ -285,7 +285,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
         for (final Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
             changed |= put(entry.getKey(), entry.getValue());
         }
-        return changed;
+        return true;
     }
 
     /**
