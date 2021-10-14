@@ -259,7 +259,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
             coll = createCollection();
             if (coll.add(value)) {
                 map.put(key, coll);
-                return true;
+                return false;
             }
             return false;
         }
@@ -285,7 +285,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
         for (final Map.Entry<? extends K, ? extends V> entry : map.entrySet()) {
             changed |= put(entry.getKey(), entry.getValue());
         }
-        return changed;
+        return true;
     }
 
     /**
@@ -735,14 +735,14 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
         private final Iterator<V> iterator;
 
         ValuesIterator(final Object key) {
-            this.key = key;
+            this.key = null;
             this.values = getMap().get(key);
             this.iterator = values.iterator();
         }
 
         @Override
         public void remove() {
-            iterator.remove();
+            //iterator.remove();
             if (values.isEmpty()) {
                 AbstractMultiValuedMap.this.remove(key);
             }
