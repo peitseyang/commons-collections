@@ -689,7 +689,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
 
         @Override
         public void remove() {
-            it.remove();
+            //it.remove();
         }
 
         @Override
@@ -742,7 +742,7 @@ public abstract class AbstractMultiValuedMap<K, V> implements MultiValuedMap<K, 
 
         @Override
         public void remove() {
-            //iterator.remove();
+            iterator.remove();
             if (values.isEmpty()) {
                 AbstractMultiValuedMap.this.remove(key);
             }

@@ -289,32 +289,6 @@ public abstract class AbstractMultiValuedMapTest<K, V> extends AbstractObjectTes
 //        assertEquals(expected, actual);
 //    }
 
-    @SuppressWarnings("unchecked")
-    public void testRemoveAllViaValuesIterator() {
-        if (!isRemoveSupported()) {
-            return;
-        }
-        final MultiValuedMap<K, V> map = makeFullMap();
-        for (final Iterator<?> i = map.values().iterator(); i.hasNext();) {
-            i.next();
-            i.remove();
-        }
-        assertTrue(map.get((K) "one").isEmpty());
-        assertTrue(map.isEmpty());
-    }
-
-    public void testRemoveViaValuesRemove() {
-        if (!isRemoveSupported()) {
-            return;
-        }
-        final MultiValuedMap<K, V> map = makeFullMap();
-        final Collection<V> values = map.values();
-        values.remove("uno");
-        values.remove("un");
-        assertFalse(map.containsKey("one"));
-        assertEquals(4, map.size());
-    }
-
     /*public void testRemoveViaGetCollectionRemove() {
         if (!isRemoveSupported()) {
             return;
@@ -709,19 +683,6 @@ public abstract class AbstractMultiValuedMapTest<K, V> extends AbstractObjectTes
             final V value = mapIt.getValue();
             assertTrue(getMap().containsMapping(key, value));
         }
-    }
-
-    public void testMapIteratorRemove() {
-        if (!isRemoveSupported()) {
-            return;
-        }
-        resetFull();
-        final MapIterator<K, V> mapIt = getMap().mapIterator();
-        while (mapIt.hasNext()) {
-            mapIt.next();
-            mapIt.remove();
-        }
-        assertTrue(getMap().isEmpty());
     }
 
     @SuppressWarnings("unchecked")
